@@ -1,5 +1,6 @@
 # Flip Test - React Native Project
 
+
 Welcome to the Flip Test React Native project! This repository is created to demonstrate skills and best practices in developing a React Native application.
 
 ---
@@ -28,7 +29,6 @@ This project is developed as part of a Flip Test to showcase expertise in React 
 - **Custom Components**: Implementation of reusable components.
 - **State Management**: Efficient state management using Context API or Redux.
 - **API Integration**: Fetch and display data from a mock API.
-- **Dark Mode Support**: Theme switching between light and dark modes.
 - **Responsive Design**: Ensures compatibility with multiple screen sizes.
 - **Error Handling**: Comprehensive handling of edge cases and errors.
 
@@ -37,28 +37,27 @@ This project is developed as part of a Flip Test to showcase expertise in React 
 ## Technologies Used
 - **React Native**
 - **React Navigation**
-- **Expo (optional)**
 - **Axios** for API requests
-- **Styled-Components** or **Tailwind CSS** for styling
+- **Zustand** for State Management
+- **React Native Reanimated** for Animations
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- Node.js (>= 16.x)
+- Node.js (>= 18.xx)
 - npm or Yarn
 - Android Studio or Xcode for running the application on emulators
-- Expo CLI (if using Expo)
 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/flip-test-react-native.git
+   git clone https://github.com/ryanap7/flip-test.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd flip-test-react-native
+   cd flip-test
    ```
 3. Install dependencies:
    ```bash
@@ -87,23 +86,22 @@ This project is developed as part of a Flip Test to showcase expertise in React 
      # or
      yarn ios
      ```
-   - For Expo:
-     Scan the QR code in the terminal using the Expo Go app.
-
 ---
 
 ## Project Structure
 ```
-flip-test-react-native/
+flip-test/
 ├── src/
-│   ├── assets/          # Images and fonts
-│   ├── components/      # Reusable components
-│   ├── screens/         # Application screens
-│   ├── navigation/      # Navigation configuration
-│   ├── contexts/        # Context API for state management
-│   ├── utils/           # Utility functions
-│   └── services/        # API service integrations
-├── App.js               # Entry point of the app
+│   ├── Assets/          # Images and fonts
+│   ├── Components/      # Reusable components
+│   ├── Hooks/           # Custom hooks for shared logic
+│   ├── Modules/         # Feature-specific modules
+│   ├── Routes/          # Navigation configuration
+│   ├── Screens/         # Application screens
+│   ├── Stores/          # State management (e.g., Redux or Zustand)
+│   ├── Themes/          # Application theming and styles
+│   ├── Utils/           # Utility functions
+│   ├── App.tsx          # Entry point of the app
 ├── package.json         # Project metadata and dependencies
 └── README.md            # Documentation
 ```
