@@ -1,11 +1,11 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import DetailTransaction from '@screens/DetailTransaction';
+import Transactions from '@screens/Transactions';
 import React from 'react';
-import DetailTransaction from '../Screens/DetailTransaction';
-import Transactions from '../Screens/Transactions';
 
 const Stack = createNativeStackNavigator();
 
-const Routers = () => {
+const RootNavigations = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -18,4 +18,4 @@ const Routers = () => {
   );
 };
 
-export default Routers;
+export default RootNavigations;
