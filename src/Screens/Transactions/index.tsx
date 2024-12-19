@@ -6,16 +6,27 @@ import styles from '@screens/Transactions/styles';
 import useTransactionStore from '@stores/useTransactionStore';
 import {Colors} from '@themes/Colors';
 import {GlobalStyles} from '@themes/Styles';
-import React, {useCallback} from 'react';
-import {ActivityIndicator, FlatList, SafeAreaView, View} from 'react-native';
+import React, {useCallback, useState} from 'react';
+import {
+  ActivityIndicator,
+  FlatList,
+  RefreshControl,
+  SafeAreaView,
+  View,
+} from 'react-native';
 import {Transaction} from 'src/Types/data';
 
 const ITEM_HEIGHT = 108;
 
 const Transactions = () => {
+  const {refreshTransactions} = useTransactions(
+    'https://recruitment-test.flip.id/frontend-test',
+  );
   const {transactions, loading}: any = useTransactionStore(
     (state: any) => state,
   );
+
+  const [refreshing, setRefreshing] = useState(false);
 
   const renderItem = useCallback(
     ({item, index}: {item: Transaction; index: number}) => (
@@ -40,7 +51,10 @@ const Transactions = () => {
     [],
   );
 
-  useTransactions('https://recruitment-test.flip.id/frontend-test');
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    refreshTransactions().finally(() => setRefreshing(false));
+  }, [refreshTransactions]);
 
   return (
     <View style={GlobalStyles.container}>
@@ -58,6 +72,13 @@ const Transactions = () => {
           contentContainerStyle={styles.list}
           ItemSeparatorComponent={renderSeparator}
           getItemLayout={getItemLayout}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              colors={[Colors['Primary-500']]}
+            />
+          }
         />
       )}
     </View>
