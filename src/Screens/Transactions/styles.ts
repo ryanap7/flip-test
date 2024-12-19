@@ -12,6 +12,13 @@ const styles = StyleSheet.create({
     borderRadius: scaleSize(8),
     overflow: 'hidden',
   },
+  cardSkeleton: {
+    padding: scaleSize(16),
+    backgroundColor: Colors.White,
+    borderRadius: scaleSize(8),
+    borderWidth: 0.25,
+    marginBottom: scaleSize(16),
+  },
   list: {
     padding: scaleSize(16),
   },
