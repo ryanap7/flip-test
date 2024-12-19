@@ -9,13 +9,9 @@ import {formatBankName, formatDate, formatRupiah} from '@utils/Helpers';
 import React from 'react';
 import {View} from 'react-native';
 
-const DetailRow = ({label = '', value = '', isBold = false}) => (
+const DetailRow = ({label = '', value = ''}) => (
   <View style={GlobalStyles.container}>
-    <Text
-      type={isBold ? 'Bold' : 'SemiBold'}
-      text={label}
-      color={Colors['Typography-900']}
-    />
+    <Text type="Bold" text={label} color={Colors['Typography-900']} />
     <Text type="SemiBold" text={value} color={Colors['Typography-900']} />
   </View>
 );
@@ -48,11 +44,10 @@ const DetailTransaction = ({route}: any) => {
         <Gap height={24} />
         <View style={[GlobalStyles.rowStyle, GlobalStyles.justifyBetween]}>
           <DetailRow
-            isBold
             label={item.beneficiary_name.toUpperCase()}
             value={item.account_number}
           />
-          <DetailRow isBold label="NOMINAL" value={formatRupiah(item.amount)} />
+          <DetailRow label="NOMINAL" value={formatRupiah(item.amount)} />
         </View>
         <Gap height={16} />
 
