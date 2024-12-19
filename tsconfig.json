@@ -3,14 +3,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["src/Assets/*"],
+      "@assets/*": ["src/Assets//*"],
       "@components/*": ["src/Components/*"],
       "@hooks/*": ["src/Hooks/*"],
-      "@modules/*": ["src/Modules/*"],
       "@navigations/*": ["src/Navigations/*"],
       "@screens/*": ["src/Screens/*"],
       "@stores/*": ["src/Stores/*"],
       "@themes/*": ["src/Themes/*"],
+      "@types/*": ["src/Types/*"],
       "@utils/*": ["src/Utils/*"]
     }
   }
