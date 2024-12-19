@@ -1,4 +1,9 @@
-import {TextInputProps, TextStyle, ViewStyle} from 'react-native';
+import {
+  DimensionValue,
+  TextInputProps,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
 export interface InputProps extends TextInputProps {}
 
@@ -32,4 +37,14 @@ export interface ModalProps {
 
 export interface ModalState {
   visible: boolean;
+}
+
+export interface SkeletonProps {
+  height: DimensionValue;
+  width: DimensionValue;
+  borderRadius?: number;
+}
+
+export interface SkeletonState {
+  viewWidth: number;
 }

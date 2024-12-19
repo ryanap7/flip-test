@@ -1,19 +1,16 @@
 import Gap from '@components/Gap';
+import Text from '@components/Text';
 import TransactionHeader from '@components/TransactionHeader';
 import TransactionItem from '@components/TransactionItem';
+import TransactionItemSkeleton from '@components/TransactionItemSkeleton';
 import useTransactions from '@hooks/useTransactions';
 import styles from '@screens/Transactions/styles';
 import useTransactionStore from '@stores/useTransactionStore';
 import {Colors} from '@themes/Colors';
 import {GlobalStyles} from '@themes/Styles';
+import {scaleSize} from '@utils/Normalize';
 import React, {useCallback, useState} from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  RefreshControl,
-  SafeAreaView,
-  View,
-} from 'react-native';
+import {FlatList, RefreshControl, View} from 'react-native';
 import {Transaction} from 'src/Types/data';
 
 const ITEM_HEIGHT = 108;
@@ -31,6 +28,20 @@ const Transactions = () => {
   const renderItem = useCallback(
     ({item, index}: {item: Transaction; index: number}) => (
       <TransactionItem index={index} item={item} />
+    ),
+    [],
+  );
+
+  const renderEmptyState = useCallback(
+    () => (
+      <View
+        style={[
+          GlobalStyles.container,
+          GlobalStyles.centerContent,
+          {marginTop: scaleSize(324)},
+        ]}>
+        <Text text="Tidak ada data" />
+      </View>
     ),
     [],
   );
@@ -60,10 +71,11 @@ const Transactions = () => {
     <View style={GlobalStyles.container}>
       <TransactionHeader />
       {loading ? (
-        <SafeAreaView
-          style={[GlobalStyles.container, GlobalStyles.centerContent]}>
-          <ActivityIndicator size="large" color={Colors['Primary-500']} />
-        </SafeAreaView>
+        <View style={styles.container}>
+          {[...Array(8)].map((_, index) => (
+            <TransactionItemSkeleton key={index} />
+          ))}
+        </View>
       ) : (
         <FlatList
           keyExtractor={keyExtractor}
@@ -79,6 +91,7 @@ const Transactions = () => {
               colors={[Colors['Primary-500']]}
             />
           }
+          ListEmptyComponent={renderEmptyState}
         />
       )}
     </View>
