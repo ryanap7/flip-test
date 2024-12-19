@@ -1,7 +1,9 @@
 import RootNavigations from '@navigations/RootNavigations';
 import {NavigationContainer} from '@react-navigation/native';
+import {GlobalStyles} from '@themes/Styles';
 import NavigationServices from '@utils/NavigationServices';
 import React, {useRef} from 'react';
+import {SafeAreaView} from 'react-native';
 import {NavigationRefType} from 'src/Types/navigations';
 
 const App = () => {
@@ -13,7 +15,9 @@ const App = () => {
         navigation.current = r;
         NavigationServices.setInstance(r);
       }}>
-      <RootNavigations />
+      <SafeAreaView style={GlobalStyles.container}>
+        <RootNavigations />
+      </SafeAreaView>
     </NavigationContainer>
   );
 };
