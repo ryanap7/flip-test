@@ -1,10 +1,18 @@
 import RootNavigations from '@navigations/RootNavigations';
 import {NavigationContainer} from '@react-navigation/native';
-import React from 'react';
+import NavigationServices from '@utils/NavigationServices';
+import React, {useRef} from 'react';
+import {NavigationRefType} from 'src/Types/navigations';
 
 const App = () => {
+  const navigation = useRef<NavigationRefType>(null);
+
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      ref={r => {
+        navigation.current = r;
+        NavigationServices.setInstance(r);
+      }}>
       <RootNavigations />
     </NavigationContainer>
   );
