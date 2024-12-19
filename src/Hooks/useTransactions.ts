@@ -40,9 +40,25 @@ const useTransactions = (endpoint: string) => {
     }
   }, [endpoint, debouncedSearchQuery, setTransactions, setLoading]);
 
+  const refreshTransactions = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(endpoint);
+      const rawData = response.data;
+      const formattedData = Object.keys(rawData).map(key => rawData[key]);
+      setTransactions(formattedData);
+    } catch (err) {
+      console.error('Failed to refresh transactions:', err);
+    } finally {
+      setLoading(false);
+    }
+  }, [endpoint, setTransactions, setLoading]);
+
   useEffect(() => {
     fetchTransactions();
   }, [fetchTransactions]);
+
+  return {refreshTransactions};
 };
 
 export default useTransactions;
