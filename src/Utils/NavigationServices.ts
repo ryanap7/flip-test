@@ -1,14 +1,10 @@
 import {
   CommonActions,
   DrawerActions,
-  NavigationContainerRef,
   StackActions,
 } from '@react-navigation/native';
 import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
-
-type RootParamList = ReactNavigation.RootParamList;
-
-type NavigationRefType = NavigationContainerRef<RootParamList> | null;
+import {NavigationRefType} from 'src/Types/navigations';
 
 class NavigationServices {
   instance: NavigationRefType = null;
